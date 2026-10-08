@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Тёмная тема — прототип</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap&subset=latin,cyrillic"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="prototype.css" />
+  </head>
+  <body>
+    <div class="page">
+      <main class="work">
+        <header class="row-split" style="margin-bottom: 14px">
+          <div>
+            <h1>Тёмная тема — прототип</h1>
+            <p class="lede">
+              Значення тут ті самі, що в CRM. Правте їх у правій панелі — сторінка
+              перемальовується одразу, а кнопка «Експортувати» віддає готовий блок
+              для вставки назад у код.
+            </p>
+          </div>
+          <div class="inline">
+            <span class="label" id="theme-label">Темна</span>
+            <button
+              class="switch"
+              id="theme-switch"
+              role="switch"
+              aria-checked="true"
+              aria-label="Тёмная тема"
+            ></button>
+          </div>
+        </header>
+
+        <!-- ─── каркас: мат, сайдбар, робоча карточка ─────────────── -->
+        <section class="section">
+          <h2>Каркас</h2>
+          <p class="label" style="margin-bottom: 8px">
+            Три ступені ґрунту: мат позаду (shell) — полотно — карточка, де йде
+            робота. У темній темі порядок той самий, лише стиснутий у темний край.
+          </p>
+          <div class="shell">
+            <nav class="nav">
+              <div class="nav-item" aria-current="page">
+                <span>Головна</span>
+              </div>
+              <div class="nav-item">
+                <span>Мої задачі</span>
+                <span class="pill">12</span>
+              </div>
+              <div class="nav-item"><span>Дзвінки</span></div>
+              <div class="nav-group">Замовлення</div>
+              <div class="nav-item">
+                <span>Оренди</span>
+                <span class="pill">5</span>
+              </div>
+              <div class="nav-item"><span>Резерви</span></div>
+              <div class="nav-group">Склади</div>
+              <div class="nav-item"><span>Каталог</span></div>
+            </nav>
+
+            <div class="workspace">
+              <div class="topbar">
+                <div class="inline">
+                  <strong>Оренди</strong>
+                  <span class="chip chip-accent">Активні 11</span>
+                </div>
+                <div class="inline">
+                  <button class="btn btn-secondary">Фільтри</button>
+                  <button class="btn btn-primary">Нова оренда</button>
+                </div>
+              </div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Оренда</th>
+                    <th>Статус</th>
+                    <th>Контрагент</th>
+                    <th>Обладнання</th>
+                    <th class="num">Грн/добу</th>
+                    <th class="num">Строк</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono">AP-10001</td>
+                    <td><span class="chip chip-warning">Очікує оплати</span></td>
+                    <td>Іваненко І. І.</td>
+                    <td>Штроборіз <span class="muted">×1</span></td>
+                    <td class="num">1 200</td>
+                    <td class="num">через 2 дн</td>
+                  </tr>
+                  <tr aria-selected="true">
+                    <td class="mono">AP-10002</td>
+                    <td><span class="chip chip-accent">Очікує видачі</span></td>
+                    <td>Петренко О. М.</td>
+                    <td>Віброплита <span class="muted">×1</span></td>
+                    <td class="num">700</td>
+                    <td class="num">через 1 дн</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AP-10003</td>
+                    <td><span class="chip chip-success">В оренді</span></td>
+                    <td class="tint-success">ТОВ «Приклад»</td>
+                    <td>
+                      Ліси 3×3 <span class="muted">×2</span>
+                      <span class="chip chip-kind-component" style="margin-left: 6px"
+                        >Комплектуюче</span
+                      >
+                    </td>
+                    <td class="num">3 650</td>
+                    <td class="num">через 1 дн</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AP-10004</td>
+                    <td><span class="chip chip-success">В оренді</span></td>
+                    <td>Сидоренко Л. П.</td>
+                    <td>
+                      Свердло <span class="muted">×4</span>
+                      <span class="chip chip-kind-consumable" style="margin-left: 6px"
+                        >Розхідник</span
+                      >
+                    </td>
+                    <td class="num">80</td>
+                    <td class="num">через 3 дн</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AP-10005</td>
+                    <td>
+                      <span class="chip chip-danger">Прострочена</span>
+                    </td>
+                    <td class="tint-danger">Коваленко Н. С.</td>
+                    <td>Болгарка <span class="muted">×1</span></td>
+                    <td class="num">850</td>
+                    <td class="num overdue">прострочено 1 дн</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AP-10006</td>
+                    <td><span class="chip chip-violet">Віртуальний комплект</span></td>
+                    <td class="tint-warning">ТОВ «Зразок»</td>
+                    <td>Вишка тура <span class="muted">×1</span></td>
+                    <td class="num">750</td>
+                    <td class="num">через 6 дн</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── етапи + форма ──────────────────────────────────────── -->
+        <section class="section">
+          <h2>Карточка оренди</h2>
+          <div class="stack" style="margin-top: 8px">
+            <div class="card">
+              <div class="stepper">
+                <div class="step step-done"><span class="step-dot">✓</span> Оформлення</div>
+                <div class="step-line"></div>
+                <div class="step step-done"><span class="step-dot">✓</span> Оплата</div>
+                <div class="step-line"></div>
+                <div class="step step-done"><span class="step-dot">✓</span> Видача</div>
+                <div class="step-line"></div>
+                <div class="step step-now"><span class="step-dot">4</span> В роботі</div>
+                <div class="step-line"></div>
+                <div class="step step-todo">
+                  <span class="step-dot">5</span> Повернення
+                </div>
+              </div>
+            </div>
+
+            <div class="surfaces">
+              <div class="card card-pad" style="width: 300px">
+                <h3>Нарахування</h3>
+                <div class="stack">
+                  <div class="field">
+                    <span class="label">Стаття витрат</span>
+                    <input class="input" placeholder="Виберіть статтю" />
+                  </div>
+                  <div class="field">
+                    <span class="label">Сума без ПДВ</span>
+                    <input class="input" value="1 040" />
+                  </div>
+                  <div class="field">
+                    <span class="label">ІПН</span>
+                    <input class="input" value="123" aria-invalid="true" />
+                    <span class="label" style="color: var(--color-danger)"
+                      >Має бути 10 цифр</span
+                    >
+                  </div>
+                  <div class="inline">
+                    <button class="btn btn-primary">Додати</button>
+                    <button class="btn btn-ghost">Скасувати</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-pad" style="width: 300px">
+                <h3>Статуси й акценти</h3>
+                <div class="inline" style="margin-bottom: 10px">
+                  <span class="chip chip-success">Наявність</span>
+                  <span class="chip chip-info">Резерв</span>
+                  <span class="chip chip-warning">Оренда</span>
+                  <span class="chip chip-danger">Ремонт</span>
+                </div>
+                <div class="inline" style="margin-bottom: 10px">
+                  <span class="badge-solid">Срочно</span>
+                  <span class="chip chip-accent">Новий</span>
+                  <button class="btn btn-danger">Видалити</button>
+                </div>
+                <p class="label">
+                  Чотири стани складу несе відтінок, а не насиченість: у темній темі
+                  відтінок не зсувається, щоб склад не перенавчати.
+                </p>
+              </div>
+
+              <div class="stack" style="width: 240px">
+                <div class="popover">
+                  <div class="menu-label">Документ</div>
+                  <div class="menu-item"><span>Складський акт</span></div>
+                  <div class="menu-item">
+                    <span>Акт приймання-передачі</span>
+                  </div>
+                  <div class="menu-item">
+                    <span>ТТН</span><span class="label">заповнити</span>
+                  </div>
+                  <div class="menu-item menu-item-danger"><span>Скасувати оренду</span></div>
+                </div>
+                <div class="toast">
+                  <span class="dot dot-success"></span>
+                  <span>Оренду збережено</span>
+                </div>
+                <div class="toast">
+                  <span class="dot dot-danger"></span>
+                  <span>Не вистачає даних для видачі</span>
+                </div>
+              </div>
+
+              <div class="dialog">
+                <h2 style="margin-bottom: 6px">Скасувати видачу?</h2>
+                <p class="muted" style="margin-bottom: 12px">
+                  Обладнання повернеться на склад, рахунок залишиться виписаним.
+                </p>
+                <div class="inline">
+                  <button class="btn btn-danger">Скасувати видачу</button>
+                  <button class="btn btn-secondary">Назад</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── що лишилось ───────────────────────────────────────── -->
+        <section class="section">
+          <h2>Що лишилось доробити</h2>
+          <div class="card card-pad" style="margin-top: 8px; max-width: 70ch">
+            <ul class="todo">
+              <li>
+                <strong>Карти Google</strong> — малюють свої тайли, темні вмикаються
+                параметром; маркери і накладки поверх карти досі світлі.
+              </li>
+              <li>
+                <strong>Редактор шаблонів</strong> — тягне власний css. Панель навколо
+                темніє, сам бланк лишається білим: це аркуш, який пішов би на друк.
+              </li>
+              <li>
+                <strong>Логотип у сайдбарі</strong> — растрова картинка на світлому тлі,
+                потрібен темний варіант.
+              </li>
+              <li>
+                <strong>Дрібні фокус-кільця</strong> на чорному з прозорістю — у темній
+                темі їх не видно.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <!-- ─── панель редактора ───────────────────────────────────── -->
+      <aside class="panel">
+        <div class="panel-head">
+          <h2>Токени</h2>
+          <button class="btn btn-secondary" id="reset">Скинути</button>
+        </div>
+        <p class="label" style="margin-bottom: 12px">
+          Правки застосовуються до <strong id="editing-theme">темної</strong> теми —
+          тієї, що зараз на екрані.
+        </p>
+
+        <div id="tokens"></div>
+
+        <h3 style="margin-top: 18px">Контраст тексту на карточці</h3>
+        <p class="label" style="margin-bottom: 6px">
+          WCAG; для основного тексту потрібно 4.5 і вище.
+        </p>
+        <table class="contrast" id="contrast"></table>
+
+        <h3 style="margin-top: 18px">Експорт</h3>
+        <button class="btn btn-primary" id="export">Експортувати зміни</button>
+        <textarea class="export" id="export-out" readonly hidden></textarea>
+      </aside>
+    </div>
+
+    <script src="prototype.js"></script>
+  </body>
+</html>
